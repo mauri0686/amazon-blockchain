@@ -1,5 +1,9 @@
 import React, {useContext} from "react";
 import {ConnectButton} from "web3uikit";
+import Image from "next/image";
+import Link from "next/link";
+import logo from "../assets/amazon_logo.png";
+import logofull from "../assets/amazon_logo_full.png";
 
 const Sidebar = () => {
     const styles = {
@@ -17,8 +21,8 @@ const Sidebar = () => {
         username: `flex items-center w-full justify-center`,
         setNickname: `text-lg font-bold flex flex-1 items-center mt-[20px] mb-[20px] text-white`,
     }
-    const username="Mauri";
-    const isAuthenticated= false;
+    const username="Qazi";
+    const isAuthenticated= true;
     // const {
     //     isAuthenticated,
     //     buyTokens,
@@ -35,10 +39,12 @@ const Sidebar = () => {
                     (
                         <>
                         <div className={styles.profilePicContainer}>
-                            <image alt='profile'
-                                   className={styles.profilePic}
-                                   height={100}
-                                   width={100}/>                    
+                            <Image
+                                src={`https://avatars.dicebear.com/api/pixel-art/${username}.svg`}
+                                alt='profile'
+                                className={styles.profilePic}
+                                height={100}
+                                width={100}/>                    
                             
                         </div>
                         {!username? (
@@ -58,10 +64,22 @@ const Sidebar = () => {
                             </div>
                         )}
                     </>
-                    )
-                }
+                    )}
+                <div className={styles.connectButton}>
+                    <ConnectButton/>
+                </div>
             </div>
-            
+            <div className={styles.menu}>
+                <Link href='/'>
+                    <div className={styles.menuItem}> 
+                    <Image 
+                        src={logo}
+                        height={30}
+                        width={30}
+                        className={styles.amazonLogo}/>
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }
